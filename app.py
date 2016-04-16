@@ -1,8 +1,7 @@
-import yaml, twitter, random
+import yaml, twitter, random, sys
 
-f = open('config.yml', 'r')
+f = open(sys.path[0] + '/config.yml', 'r')
 c = yaml.load(f.read())
-print c
 
 api = twitter.Api(consumer_key=c['consumer_key'],
     consumer_secret=c['consumer_secret'],
@@ -11,3 +10,4 @@ api = twitter.Api(consumer_key=c['consumer_key'],
 
 name = random.choice(c['names'])
 api.UpdateProfile(name=name)
+
